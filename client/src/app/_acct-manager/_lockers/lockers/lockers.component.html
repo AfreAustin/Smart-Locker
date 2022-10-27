@@ -1,0 +1,28 @@
+<h2>Lockers</h2>
+ 
+<table>
+    <thead>
+        <tr>
+            <th>Locker Name</th>
+            <th>Last Opened</th>
+            <th>Last Closed</th>
+            <th>Locker ID </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let locker of lockers$ | async">
+            <td>{{locker.lockName}}</td>
+            <td>{{locker.lastOpen}}</td>
+            <td>{{locker.lastShut}}</td>
+            <td>{{locker._id}}</td>
+            <td>
+                <button [routerLink]="['edit/', locker._id]">Edit</button>
+                <button (click)="deleteLocker(locker._id || '')">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button [routerLink]="['new']">Add a New Locker</button>

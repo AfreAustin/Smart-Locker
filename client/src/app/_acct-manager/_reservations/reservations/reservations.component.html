@@ -1,0 +1,30 @@
+<h2>Reservations</h2>
+ 
+<table>
+    <thead>
+        <tr>
+            <th>Reservation ID</th>
+            <th>Item Name</th>
+            <th>User Name</th>
+            <th>Start Time</th>
+            <th>Stop Time</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let reservation of reservations$ | async">
+            <td>{{reservation._id}}</td>
+            <td>{{reservation.itemName}}</td>
+            <td>{{reservation.userName}}</td>
+            <td>{{reservation.strtTime}}</td>
+            <td>{{reservation.stopTime}}</td>
+            <td>
+                <button [routerLink]="['edit/', reservation._id]">Edit</button>
+                <button (click)="deleteReservation(reservation._id || '')">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button [routerLink]="['new']">Add a New Reservation</button>

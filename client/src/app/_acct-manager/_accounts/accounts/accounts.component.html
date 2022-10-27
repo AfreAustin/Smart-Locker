@@ -1,0 +1,34 @@
+<h2>Accounts</h2>
+ 
+<table>
+    <thead>
+        <tr>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Type</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>RFID</th>
+            <th>ID</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let account of accounts$ | async">
+            <td>{{account.userName}}</td>
+            <td>{{account.password}}</td>
+            <td>{{account.userType}}</td>
+            <td>{{account.foreName}}</td>
+            <td>{{account.lastName}}</td>
+            <td>{{account.userRFID}}</td>
+            <td>{{account._id}}</td>
+            <td>
+                <button [routerLink]="['edit/', account._id]">Edit</button>
+                <button (click)="deleteAccount(account._id || '')">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button [routerLink]="['new']">Add a New Account</button>

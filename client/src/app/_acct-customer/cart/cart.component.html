@@ -1,0 +1,27 @@
+<h3>Pick-up Items</h3>
+
+<div class="grid-hold">
+  <div class="grid-item" *ngFor="let pickupItem of pickups">
+    <p>{{ pickupItem.itemName }}</p>
+
+    <form [formGroup]="picking" 
+    (ngSubmit)="pickingUp( pickupItem ); onPickup()">
+      <button class="button" type="submit">Pickup</button>
+    </form>
+
+  </div>
+</div>
+
+<h3>Return Items</h3>
+
+<div class="grid-hold">
+  <div class="grid-item" *ngFor="let returnItem of returns">
+    <p>{{ returnItem.itemName }}</p>
+
+    <form [formGroup]="returning" 
+    (ngSubmit)="returnBack( returnItem ); onReserve()">      
+      <button class="button" type="submit">Return</button>
+    </form>
+
+  </div>
+</div>

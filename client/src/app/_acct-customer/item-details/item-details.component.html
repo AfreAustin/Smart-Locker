@@ -1,0 +1,11 @@
+<div *ngIf="(item$ | async) as item">
+    <img [src]="item.itemIcon" width="300" >
+    <h3>{{ item.itemName }}</h3>
+    
+    <p>Available: {{ item.itemFree }}</p>
+    <p>Requirements: {{ item.itemReqs }} </p>
+    <p>Description: {{ item.itemDesc }}</p>
+     
+    <!-- adds product to cart -->
+    <button type="button" (click)="reserve(item)"> Reserve </button>
+</div>

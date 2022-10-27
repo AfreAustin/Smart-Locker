@@ -1,0 +1,51 @@
+<form class="forms" autocomplete="off" [formGroup]="reservationForm" (ngSubmit)="submitForm()">
+    <div>
+      <label for="itemName">Item</label>
+    </div>
+    <div class="grid-hold">
+      <div class="grid-item" *ngFor="let item of items$ | async">
+        <label for="itemName"> {{item.itemName}} </label>
+        <input type="radio" formControlName="itemName" name="itemName" id="itemName" [value]="item.itemName">
+      </div>
+    </div>
+
+    <div>
+      <label for="userName">Account</label>
+    </div>
+    <div class="grid-hold">
+      <div class="grid-item" *ngFor="let account of accounts$ | async">
+        <label for="userName"> {{account.userName}} </label>
+        <input type="radio" formControlName="userName" name="userName" id="userName" [value]="account.userName">
+      </div>
+    </div>
+
+    <div>
+        <label for="strtTime">Start Time</label>
+        <input type="text" formControlName="strtTime" placeholder="strtTime" required>
+    </div>
+
+    <div *ngIf="strtTime.invalid && (strtTime.dirty || strtTime.touched)">
+        <div *ngIf="strtTime.errors?.['required']">
+          Start Time is required.
+        </div>
+        <div *ngIf="strtTime.errors?.['minlength']">
+          Start Time must be at least 3 characters long.
+        </div>
+    </div>
+
+    <div>
+        <label for="stopTime">Stop Time</label>
+        <input type="text" formControlName="stopTime" placeholder="stopTime" required>
+    </div>
+
+    <div *ngIf="stopTime.invalid && (stopTime.dirty || stopTime.touched)">
+        <div *ngIf="stopTime.errors?.['required']">
+          Stop Time is required.
+        </div>
+        <div *ngIf="stopTime.errors?.['minlength']">
+          Stop Time must be at least 3 characters long.
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="reservationForm.invalid">Add</button>
+  </form>

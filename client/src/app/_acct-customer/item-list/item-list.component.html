@@ -1,0 +1,21 @@
+<div style="display: flex; width: 50%;">
+    <p> Sort by &nbsp;</p>
+    <span>
+        <select>
+            <option>Name</option>
+            <option>Availability</option>
+        </select>
+    </span>
+</div>
+
+<br><br><br>
+
+<div class="grid-hold">
+    <div class="grid-item" *ngFor="let item of items$ | async">
+        <!-- link item to item's details -->
+        <a [routerLink]="['/customer/items', item._id]"> 
+            <img [src]="item.itemIcon" width="100" height="100" [title]="item.itemName">
+            <br> {{ item.itemName }}
+        </a>
+    </div>
+</div>

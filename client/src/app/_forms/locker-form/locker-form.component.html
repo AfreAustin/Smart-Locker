@@ -1,0 +1,45 @@
+<form class="forms" autocomplete="off" [formGroup]="lockerForm" (ngSubmit)="submitForm()">
+    <div>
+      <label for="lockName">Locker Name</label>
+      <input type="text" id="lockName" formControlName="lockName" placeholder="LockName" required>
+    </div>
+
+    <div *ngIf="lockName.invalid && (lockName.dirty || lockName.touched)">
+      <div *ngIf="lockName.errors?.['required']">
+        Locker Name is required.
+      </div>
+      <div *ngIf="lockName.errors?.['minlength']">
+        Locker Name must be at least 3 characters long.
+      </div>
+    </div>
+
+    <div>
+      <label for="lastOpen">Last Opened</label>
+      <input type="text" formControlName="lastOpen" placeholder="lastOpen" required>
+    </div>
+
+    <div *ngIf="lastOpen.invalid && (lastOpen.dirty || lastOpen.touched)">
+      <div *ngIf="lastOpen.errors?.['required']">
+        Last Opened is required.
+      </div>
+      <div *ngIf="lastOpen.errors?.['minlength']">
+        Last Opened must be at least 3 characters long.
+      </div>
+    </div>
+
+    <div>
+        <label for="lastShut">Last Closed</label>
+        <input type="text" formControlName="lastShut" placeholder="lastShut" required>
+    </div>
+
+    <div *ngIf="lastShut.invalid && (lastShut.dirty || lastShut.touched)">
+        <div *ngIf="lastShut.errors?.['required']">
+          Last Closed is required.
+        </div>
+        <div *ngIf="lastShut.errors?.['minlength']">
+          Last Closed must be at least 3 characters long.
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="lockerForm.invalid">Add</button>
+  </form>
